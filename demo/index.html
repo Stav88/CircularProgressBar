@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Test circular progress bar</title>
+		<link rel="stylesheet" href="../src/circular-progressbar.css"/>
+		<script src="../src/CircularProgressBar.class.js"></script>
+	</head>
+	<body>
+		<form action="#">
+			<div>
+				<label for="value">Value</label><input id="value" type="range" min="-1" max="100" />
+				<label for="size">Size</label><input id="size" type="number" min="0" step="1" value="100" />
+				<label for="color">Color</label><input id="color" type="color" value="#000000" />
+				<label for="inner-rayon">Inner Rayon</label><input id="inner-rayon" type="range" min="0" max="1" value="0.5" step="0.01" />
+				<label for="waiting-fill">Waiting Fill</label><input id="waiting-fill" type="range" min="0" max="1" value="0.66" step="0.01" />
+			</div>
+		</form>
+		<script>
+			(function () {
+				"use strict";
+
+				var progress = new CircularProgressBar();
+				document.body.appendChild(progress.element);
+				var value       = document.getElementById('value');
+				var size        = document.getElementById('size');
+				var color       = document.getElementById('color');
+				var innerRayon  = document.getElementById('inner-rayon');
+				var waitingFill = document.getElementById('waiting-fill');
+				function updateValue()
+				{
+					progress.max   = value.max;
+					progress.value = value.value < 0? null: value.value;
+				}
+				function updateSize()
+				{
+					progress.element.setAttribute("width",  size.value);
+					progress.element.setAttribute("height", size.value);
+				}
+				function updateColor()
+				{
+					progress.element.setAttribute("fill", color.value);
+				}
+				function updateInnerRayon()
+				{
+					progress.innerRayon = innerRayon.value;
+				}
+				function updateWaitingFill()
+				{
+					progress.waitingFill = waitingFill.value;
+				}
+				updateValue();
+				updateSize();
+				updateColor();
+				updateInnerRayon();
+				updateWaitingFill();
+				value.addEventListener('input', updateValue);
+				size.addEventListener('input', updateSize);
+				color.addEventListener('input', updateColor);
+				innerRayon.addEventListener('input', updateInnerRayon);
+				waitingFill.addEventListener('input', updateWaitingFill);
+			})();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,8 @@
+@keyframes circular-progressbar-waiting {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+.circular-progressbar-waiting {
+	transform-origin: center;
+	animation: circular-progressbar-waiting 1s infinite linear;
+}
