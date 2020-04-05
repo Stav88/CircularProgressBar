@@ -95,11 +95,11 @@
 	{
 		var value = othis._private._value;
 		var max   = othis._private._max;
-		var className = "";
+		var className = "circular-progressbar";
 		if (othis._private._value === null) {
 			value = othis._private._waitingFill;
 			max   = 1;
-			className = "circular-progressbar-waiting";
+			className += " circular-progressbar-waiting";
 		}
 		var angle = 2 * Math.PI * value / max;
 		var x     = Math.cos(ANGLE_OFFSET + angle);
