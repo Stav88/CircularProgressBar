@@ -50,7 +50,9 @@ Rayon of inner transparent disk in percent of width/height of SVG element.
 * Range: `0.0` - `1.0`
 * Default value: 0.66
 
-Angle of arc to display when `value` is `null` in gradient.
+Angle of arc to display when `value` is `null`:
+* 0.0 is 0deg
+* 1.0 is 360deg
 
 ## Property `element`
 * Writable: false
@@ -75,3 +77,24 @@ progress.element.setAttribute("height", "20em");
 progress.element.setAttribute("width",  "100%");
 progress.element.setAttribute("height", "100%");
 ```
+
+## CSS class `circular-progressbar`
+
+SVG element generated. It is possible de change the skin using CSS:
+* Color:
+```css
+.circular-progressbar {
+	fill: #0080FF;
+}
+```
+* Size:
+```css
+.circular-progressbar {
+	width: 100px;
+	height: 100px;
+}
+```
+
+## CSS class `circular-progressbar-waiting`
+
+SVG element generated when progressbar has no value (`value === null`).
